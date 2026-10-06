@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Hadia ❤️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Georgia,serif;
+  background:#100812;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* ================= LOCK SCREEN ================= */
+
+.lock{
+  position:fixed;
+  inset:0;
+  z-index:999;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:
+    radial-gradient(circle at 50% 30%,#731b62,#261027 50%,#090509);
+  transition:1s ease;
+}
+
+.lock.hide{
+  opacity:0;
+  pointer-events:none;
+  transform:scale(1.08);
+}
+
+.lock-box{
+  width:min(90%,400px);
+  padding:40px 25px;
+  text-align:center;
+  border-radius:30px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  backdrop-filter:blur(20px);
+  box-shadow:0 25px 80px rgba(0,0,0,.6);
+}
+
+.lock-icon{
+  font-size:70px;
+  animation:pulse 2s infinite;
+}
+
+.lock-box h1{
+  font-size:30px;
+  margin:10px 0;
+}
+
+.lock-box p{
+  color:#e9cce5;
+  margin-bottom:20px;
+}
+
+.password-area{
+  display:flex;
+  gap:8px;
+  justify-content:center;
+}
+
+.password-area input{
+  width:190px;
+  padding:15px;
+  border:none;
+  border-radius:15px;
+  outline:none;
+  background:rgba(255,255,255,.12);
+  color:white;
+  text-align:center;
+  font-size:20px;
+  letter-spacing:7px;
+}
+
+button{
+  border:none;
+  border-radius:15px;
+  padding:14px 20px;
+  background:linear-gradient(135deg,#ff4fa3,#ff79bb);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(255,79,163,.35);
+}
+
+#error{
+  color:#ff9cc9;
+  margin-top:12px;
+  min-height:20px;
+}
+
+/* ================= MAIN ================= */
+
+main{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 0,#70215f,#261029 45%,#0d0811);
+}
+
+section{
+  max-width:1050px;
+  margin:auto;
+  padding:70px 18px;
+  text-align:center;
+}
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:9px 18px;
+  border-radius:50px;
+  border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.08);
+  color:#ffd8ef;
+}
+
+.bubu{
+  font-size:120px;
+  margin:25px;
+  animation:float 3s ease-in-out infinite;
+  filter:drop-shadow(0 15px 20px rgba(0,0,0,.5));
+}
+
+.title{
+  font-family:Arial,sans-serif;
+  font-size:clamp(45px,11vw,105px);
+  line-height:.95;
+  margin:20px 0;
+  font-weight:900;
+  letter-spacing:3px;
+
+  background:linear-gradient(
+    90deg,
+    white,
+    #ff9dcc,
+    #ffd8ef,
+    white
+  );
+
+  background-size:250%;
+  -webkit-background-clip:text;
+  color:transparent;
+
+  animation:shine 4s linear infinite;
+}
+
+.love{
+  font-size:clamp(28px,6vw,50px);
+  font-weight:bold;
+  color:#ffd4eb;
+  text-shadow:0 0 25px rgba(255,86,170,.6);
+}
+
+.subtitle{
+  margin-top:15px;
+  color:#f0d9e9;
+  font-size:19px;
+}
+
+/* ================= CARD ================= */
+
+.card{
+  padding:30px;
+  border-radius:28px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.15);
+  backdrop-filter:blur(15px);
+  box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.card h2{
+  font-size:35px;
+  color:#ffd5e9;
+  margin-bottom:15px;
+}
+
+/* ================= PHOTO GALLERY ================= */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-top:25px;
+}
+
+.photo{
+  aspect-ratio:1;
+  border-radius:20px;
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
+
+.photo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ================= LETTER ================= */
+
+.letter{
+  text-align:left;
+  line-height:1.9;
+  font-size:18px;
+  color:#f7e8f1;
+  white-space:pre-line;
+}
+
+.signature{
+  margin-top:30px;
+  text-align:center;
+  font-size:38px;
+  font-weight:bold;
+  color:#ff8fc5;
+  text-shadow:0 0 20px rgba(255,100,180,.5);
+}
+
+/* ================= MUSIC ================= */
+
+.music{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:100;
+}
+
+/* ================= HEARTS ================= */
+
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:10;
+  overflow:hidden;
+}
+
+.heart{
+  position:absolute;
+  bottom:-30px;
+  animation:rise linear forwards;
+}
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes float{
+  50%{
+    transform:translateY(-15px);
+  }
+}
+
+@keyframes pulse{
+  50%{
+    transform:scale(1.1);
+  }
+}
+
+@keyframes shine{
+  to{
+    background-position:250%;
+  }
+}
+
+@keyframes rise{
+  to{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:700px){
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  section{
+    padding:55px 14px;
+  }
+
+  .bubu{
+    font-size:90px;
+  }
+
+  .password-area{
+    flex-direction:column;
+  }
+
+  .password-area input{
+    width:100%;
+  }
+
+  .card{
+    padding:20px;
+  }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- ================= PASSWORD SCREEN ================= -->
+
+<div class="lock" id="lock">
+
+  <div class="lock-box">
+
+    <div class="lock-icon">
+      🔐
+    </div>
+
+    <h1>Someone Special ❤️</h1>
+
+    <p>
+      A little surprise is waiting for Hadia...
+    </p>
+
+    <div class="password-area">
+
+      <input
+        id="password"
+        type="password"
+        maxlength="4"
+        inputmode="numeric"
+        placeholder="••••"
+      >
+
+      <button onclick="unlock()">
+        OPEN
+      </button>
+
+    </div>
+
+    <div id="error"></div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= MUSIC ================= -->
+
+<button class="music" onclick="toggleMusic()">
+  🎵 Music: OFF
+</button>
+
+
+<!-- ================= FLOATING HEARTS ================= -->
+
+<div class="hearts" id="hearts"></div>
+
+
+<!-- ================= WEBSITE ================= -->
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div>
+
+    <div class="badge">
+      ✨ A Special Birthday Surprise ✨
+    </div>
+
+    <div class="bubu">
+      🧸
+    </div>
+
+    <h1 class="title">
+      HAPPY<br>
+      BIRTHDAY<br>
+      HADIA
+    </h1>
+
+    <div class="love">
+      میری پیاری جان ❤️
+    </div>
+
+    <p class="subtitle">
+      Today is all about the most beautiful soul. 💕
+    </p>
+
+    <br>
+
+    <button onclick="scrollToPhotos()">
+      💖 Open Your Memories
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= PHOTOS ================= -->
+
+<section id="photos">
+
+  <div class="card">
+
+    <h2>
+      📸 Our Beautiful Memories
+    </h2>
+
+    <p>
+      Special Moments ❤️
+    </p>
+
+    <div
+      class="gallery"
+      id="gallery"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= LETTER ================= -->
+
+<section>
+
+  <div class="card">
+
+    <h2>
+      💌 A Letter For Hadia
+    </h2>
+
+    <div class="letter">
+
+میری پیاری جان،
+
+آج کا دن میرے لیے صرف تمہاری سالگرہ نہیں، بلکہ اس خوبصورت انسان کا جشن ہے جس نے میری دنیا کو محبت، خوشیوں اور مسکراہٹوں سے بھر دیا۔
+
+دعا ہے کہ تمہاری زندگی کا ہر آنے والا دن پہلے سے زیادہ خوبصورت ہو۔
+
+تمہاری ہر خواہش پوری ہو،
+ہر خواب حقیقت بنے،
+اور تمہاری مسکراہٹ ہمیشہ اسی طرح قائم رہے۔
+
+تم میرے لیے بہت خاص ہو، اور شاید الفاظ کبھی بھی پوری طرح بیان نہ کر سکیں کہ تم میرے دل کے کتنے قریب ہو۔
+
+آج بس اتنا کہنا ہے:
+
+ہمیشہ خوش رہو،
+ہمیشہ مسکراتی رہو،
+اور کبھی یہ مت بھولنا کہ تم بہت بہت خاص ہو۔ ❤️
+
+    </div>
+
+    <div class="signature">
+      I LOVE YOU HADIA ❤️
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer style="
+  text-align:center;
+  padding:40px;
+  color:#c9aabd;
+">
+  Made with ❤️ especially for Hadia ✨
+</footer>
+
+</main>
+
+
+<script>
+
+/* ================= PASSWORD ================= */
+
+function unlock(){
+
+  const password =
+    document.getElementById("password").value;
+
+  if(password === "1234"){
+
+    document
+      .getElementById("lock")
+      .classList.add("hide");
+
+    startHearts();
+
+  }else{
+
+    document
+      .getElementById("error")
+      .textContent =
+      "Wrong password ❤️ Try again";
+
+  }
+
+}
+
+
+/* ENTER KEY */
+
+document
+  .getElementById("password")
+  .addEventListener(
+    "keydown",
+    function(event){
+
+      if(event.key === "Enter"){
+        unlock();
+      }
+
+    }
+  );
+
+
+/* ================= 8 PICTURES ================= */
+
+const gallery =
+  document.getElementById("gallery");
+
+for(let i=1;i<=8;i++){
+
+  const box =
+    document.createElement("div");
+
+  box.className="photo";
+
+  box.innerHTML=`
+    <img
+      src="${i}.jpg"
+      alt="Hadia Memory ${i}"
+      onerror="this.src='${i}.png'"
+    >
+  `;
+
+  gallery.appendChild(box);
+
+}
+
+
+/* ================= HEARTS ================= */
+
+function startHearts(){
+
+  setInterval(function(){
+
+    const heart =
+      document.createElement("div");
+
+    heart.className="heart";
+
+    const emojis=[
+      "❤️",
+      "💖",
+      "💕",
+      "💗",
+      "✨"
+    ];
+
+    heart.textContent =
+      emojis[
+        Math.floor(
+          Math.random()*emojis.length
+        )
+      ];
+
+    heart.style.left =
+      Math.random()*100+"%";
+
+    heart.style.fontSize =
+      (16+Math.random()*25)+"px";
+
+    heart.style.animationDuration =
+      (5+Math.random()*5)+"s";
+
+    document
+      .getElementById("hearts")
+      .appendChild(heart);
+
+
+    setTimeout(
+      ()=>heart.remove(),
+      10000
+    );
+
+  },450);
+
+}
+
+
+/* ================= MUSIC ================= */
+
+let audio;
+let playing=false;
+
+
+function toggleMusic(){
+
+  if(!audio){
+
+    audio =
+      new Audio("birthday-music.mp3");
+
+    audio.loop=true;
+
+  }
+
+
+  if(playing){
+
+    audio.pause();
+
+    playing=false;
+
+    document
+      .querySelector(".music")
+      .textContent="🎵 Music: OFF";
+
+  }else{
+
+    audio
+      .play()
+      .then(function(){
+
+        playing=true;
+
+        document
+          .querySelector(".music")
+          .textContent="🎵 Music: ON";
+
+      })
+      .catch(function(){
+
+        alert(
+          "Please put birthday-music.mp3 in the same folder as index.html"
+        );
+
+      });
+
+  }
+
+}
+
+
+/* ================= SCROLL ================= */
+
+function scrollToPhotos(){
+
+  document
+    .getElementById("photos")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+</script>
+
+</body>
+  </html>
+    
